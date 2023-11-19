@@ -30,9 +30,9 @@ pub async fn run() {
 async fn handler(sm: SlackMessage, workspace: &str, channel: &str) {
     let chat_id = workspace.to_string() + channel;
     let co = ChatOptions {
-        model: ChatModel::GPT35Turbo,
+        model: ChatModel::GPT35Turbo16K,
         restart: false,
-        system_prompt: None,
+        system_prompt: None, // 是否用 #主题内容# 来设计system_prompt
     };
     log::debug!("get OpenAI settings");
     let of = OpenAIFlows::new();
